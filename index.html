@@ -1,0 +1,1935 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+<meta name="theme-color" content="#05060f">
+<title>Nanjing AstroPortal · Гид по университетам Нанкина (English Track)</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root {
+--bg: #05060f;
+--accent: #7b5cff;
+--accent2: #00e5ff;
+--text: #e8ecff;
+--muted: #9aa3c7;
+--card: rgba(14, 18, 38, 0.82);
+--border: rgba(123, 92, 255, 0.32);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+background: var(--bg);
+color: var(--text);
+font-family: 'Inter', system-ui, sans-serif;
+overflow-x: hidden;
+min-height: 100vh;
+}
+h1, h2, h3, .font-display { font-family: 'Unbounded', sans-serif; }
+#stars-bg {
+position: fixed;
+inset: 0;
+z-index: 0;
+background:
+radial-gradient(circle at 85% 12%, rgba(123, 92, 255, 0.22) 0%, transparent 45%),
+radial-gradient(circle at 12% 85%, rgba(0, 229, 255, 0.16) 0%, transparent 45%),
+radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.9) 0%, #05060f 100%),
+radial-gradient(2px 2px at 20% 30%, #fff, transparent),
+radial-gradient(1.5px 1.5px at 40% 70%, #fff, transparent),
+radial-gradient(1.5px 1.5px at 65% 25%, #00e5ff, transparent),
+radial-gradient(1px 1px at 85% 60%, #fff, transparent),
+radial-gradient(1.5px 1.5px at 12% 82%, #a78bfa, transparent),
+radial-gradient(2px 2px at 92% 38%, #fff, transparent);
+background-repeat: repeat;
+background-size: 100% 100%, 100% 100%, 100% 100%, 320px 320px, 280px 280px, 360px 360px, 250px 250px, 300px 300px, 400px 400px;
+pointer-events: none;
+}
+.cosmic-glass {
+background: var(--card);
+border: 1px solid var(--border);
+backdrop-filter: blur(16px);
+box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+.cosmic-card {
+background: rgba(12, 16, 34, 0.85);
+border: 1px solid rgba(123, 92, 255, 0.28);
+border-radius: 20px;
+transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.cosmic-card:hover {
+border-color: rgba(0, 229, 255, 0.6);
+transform: translateY(-4px);
+box-shadow: 0 16px 40px rgba(0, 229, 255, 0.12);
+}
+.sub-box {
+background: rgba(7, 10, 24, 0.78);
+border: 1px solid rgba(123, 92, 255, 0.22);
+border-radius: 14px;
+padding: 14px;
+}
+.gradient-title {
+background: linear-gradient(90deg, #ffffff 0%, #00e5ff 52%, #a78bfa 100%);
+-webkit-background-clip: text;
+background-clip: text;
+color: transparent;
+}
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: #05060f; }
+::-webkit-scrollbar-thumb { background: rgba(123, 92, 255, 0.5); border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0, 229, 255, 0.8); }
+</style>
+</head>
+<body class="flex flex-col min-h-screen selection:bg-cyan-500 selection:text-slate-950">
+<div id="stars-bg"></div>
+<header class="sticky top-0 z-40 border-b border-indigo-500/30 bg-slate-950/90 backdrop-blur-xl">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-3">
+<a href="#hero" class="flex items-center gap-3 min-w-0">
+<div class="w-10 h-10 shrink-0 rounded-xl bg-gradient-to-br from-indigo-600 to-cyan-500 flex items-center justify-center shadow-lg shadow-indigo-500/30">
+<i class="fa-solid fa-shuttle-space text-white text-lg"></i>
+</div>
+<div class="truncate">
+<span class="text-[10px] uppercase tracking-widest text-cyan-400 font-bold block">Nanjing Education Hub</span>
+<span class="text-sm sm:text-base font-bold text-white font-display truncate block">Университеты Нанкина</span>
+</div>
+</a>
+<nav class="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-300">
+<a href="#catalog" class="hover:text-cyan-400 transition">Каталог вузов</a>
+<a href="#calculator" class="hover:text-cyan-400 transition">Подбор по баллам</a>
+<a href="#admission-matrix" class="hover:text-cyan-400 transition">Матрица поступления</a>
+<a href="#scholarships" class="hover:text-cyan-400 transition">Гранты и стипендии</a>
+</nav>
+<div class="flex items-center gap-2">
+<button onclick="openCompareModal()" class="relative px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-indigo-600/30 hover:bg-indigo-600/50 text-cyan-300 border border-cyan-500/40 transition flex items-center gap-2">
+<i class="fa-solid fa-scale-balanced"></i>
+<span class="hidden sm:inline">Сравнение</span>
+<span id="compareCountBadge" class="px-1.5 py-0.5 text-[11px] rounded-full bg-cyan-400 text-slate-950 font-extrabold">0</span>
+</button>
+<button onclick="toggleMobileMenu()" class="lg:hidden w-10 h-10 rounded-xl bg-slate-900 border border-indigo-500/40 text-slate-200 flex items-center justify-center">
+<i id="mobileMenuIcon" class="fa-solid fa-bars"></i>
+</button>
+</div>
+</div>
+<div id="mobileNav" class="hidden lg:hidden border-t border-indigo-500/20 bg-slate-950/95 px-4 py-3 space-y-2 text-sm">
+<a href="#catalog" onclick="toggleMobileMenu()" class="block py-2 px-3 rounded-lg hover:bg-indigo-950/60 text-slate-200"><i class="fa-solid fa-building-columns w-6 text-cyan-400"></i> Каталог 13 вузов</a>
+<a href="#calculator" onclick="toggleMobileMenu()" class="block py-2 px-3 rounded-lg hover:bg-indigo-950/60 text-slate-200"><i class="fa-solid fa-calculator w-6 text-indigo-400"></i> Калькулятор шансов</a>
+<a href="#admission-matrix" onclick="toggleMobileMenu()" class="block py-2 px-3 rounded-lg hover:bg-indigo-950/60 text-slate-200"><i class="fa-solid fa-table-list w-6 text-emerald-400"></i> Сводная таблица приёма</a>
+<a href="#scholarships" onclick="toggleMobileMenu()" class="block py-2 px-3 rounded-lg hover:bg-indigo-950/60 text-slate-200"><i class="fa-solid fa-award w-6 text-amber-400"></i> Гранты и стипендии</a>
+</div>
+</header>
+<section id="hero" class="relative z-10 pt-8 pb-12 sm:py-16 px-4 sm:px-6">
+<div class="max-w-7xl mx-auto">
+<div class="cosmic-glass rounded-3xl p-6 sm:p-10 md:p-12 border border-indigo-500/35 relative overflow-hidden">
+<div class="max-w-4xl space-y-5">
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-400/40 text-cyan-300 text-xs font-semibold">
+<i class="fa-solid fa-earth-asia"></i> Образовательный портал · Программы на английском языке
+</div>
+<h1 class="text-2xl sm:text-4xl md:text-5xl font-extrabold gradient-title leading-tight">
+Атлас высшего образования в Нанкине для иностранцев
+</h1>
+<p class="text-sm sm:text-lg text-slate-300 leading-relaxed">
+Исследуйте <b>13 ведущих государственных университетов Нанкина</b>. Откройте для себя как технические направления (ИИ, аэрокосмос, автомеханика, 6G, архитектура), так и сильные факультеты <b>Международного бизнеса, Финансов, Аудита, Медицины и Дизайна</b> с подробной карьерной траекторией на русском языке.
+</p>
+<div class="pt-2 flex flex-wrap gap-2.5">
+<a href="#catalog" onclick="setFilterCategory('all')" class="px-5 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-500 text-white font-bold text-xs sm:text-sm shadow-lg shadow-indigo-600/30 hover:opacity-95 transition flex items-center gap-2">
+<i class="fa-solid fa-compass"></i> Смотреть все 13 вузов
+</a>
+<a href="#calculator" class="px-5 py-3 rounded-xl bg-slate-900/90 hover:bg-slate-800 text-cyan-300 border border-cyan-500/40 font-semibold text-xs sm:text-sm transition flex items-center gap-2">
+<i class="fa-solid fa-sliders"></i> Подобрать вуз по GPA и IELTS
+</a>
+</div>
+</div>
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mt-8 pt-8 border-t border-indigo-500/25">
+<div class="sub-box">
+<span class="text-2xl sm:text-3xl font-extrabold text-cyan-400 font-display">13</span>
+<p class="text-xs text-slate-300 mt-1">Государственных вузов (включая C9, 985, 211 и финансовые вузы)</p>
+</div>
+<div class="sub-box">
+<span class="text-2xl sm:text-3xl font-extrabold text-indigo-400 font-display">110+</span>
+<p class="text-xs text-slate-300 mt-1">Программ Bachelor, Master и PhD полностью на английском</p>
+</div>
+<div class="sub-box">
+<span class="text-2xl sm:text-3xl font-extrabold text-emerald-400 font-display">3 ступени</span>
+<p class="text-xs text-slate-300 mt-1">Карьерного роста (Entry → Middle → Senior) в каждом вузе</p>
+</div>
+<div class="sub-box">
+<span class="text-2xl sm:text-3xl font-extrabold text-amber-400 font-display">100%</span>
+<p class="text-xs text-slate-300 mt-1">Перевод всех профессий и реальных учебных задач на русский</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="calculator" class="relative z-10 py-6 px-4 sm:px-6">
+<div class="max-w-7xl mx-auto">
+<div class="cosmic-glass rounded-3xl p-5 sm:p-8 border border-indigo-500/35">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-indigo-500/25">
+<div>
+<span class="text-xs uppercase tracking-widest text-cyan-400 font-bold">Интерактивный навигатор абитуриента</span>
+<h2 class="text-xl sm:text-2xl font-bold text-white font-display mt-1">Калькулятор подбора университета по вашим параметрам</h2>
+</div>
+<span id="calcResultCount" class="px-3.5 py-1.5 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 self-start md:self-auto">
+Подходит: 13 из 13 вузов
+</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-6">
+<div class="sub-box">
+<div class="flex justify-between text-xs mb-2">
+<span class="text-slate-300 font-medium">Ваш средний балл (GPA из 4.0):</span>
+<span id="gpaVal" class="font-bold text-cyan-400">3.2</span>
+</div>
+<input id="calcGpa" type="range" min="2.5" max="4.0" step="0.1" value="3.2" oninput="updateCalculator()" class="w-full accent-cyan-400 cursor-pointer">
+<div class="flex justify-between text-[10px] text-slate-400 mt-1">
+<span>2.5 (Удовл.)</span>
+<span>3.0 (Хор.)</span>
+<span>4.0 (Отл.)</span>
+</div>
+</div>
+<div class="sub-box">
+<div class="flex justify-between text-xs mb-2">
+<span class="text-slate-300 font-medium">Уровень IELTS (или эквивалент):</span>
+<span id="ieltsVal" class="font-bold text-indigo-300">6.5</span>
+</div>
+<input id="calcIelts" type="range" min="5.5" max="7.5" step="0.5" value="6.5" oninput="updateCalculator()" class="w-full accent-indigo-400 cursor-pointer">
+<div class="flex justify-between text-[10px] text-slate-400 mt-1">
+<span>5.5</span>
+<span>6.0 (Базовый)</span>
+<span>6.5+ (Топ-вузы)</span>
+</div>
+</div>
+<div class="sub-box">
+<label class="text-xs text-slate-300 font-medium block mb-2">Желаемое направление:</label>
+<select id="calcInterest" onchange="updateCalculator()" class="w-full bg-slate-900 border border-indigo-500/40 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-cyan-400">
+<option value="all">Все специальности и факультеты</option>
+<option value="бизнес">Международный бизнес и торговля (ВЭД)</option>
+<option value="финанс">Финансы, Банки, Аудит и Инвестиции</option>
+<option value="авто">Автомеханика, Автопром и Машиностроение</option>
+<option value="компьютер">ИТ, Искусственный интеллект и Телеком</option>
+<option value="медиц">Медицина (MBBS), Фармацевтика и Биотех</option>
+<option value="архитектур">Архитектура, Строительство и Дизайн</option>
+</select>
+</div>
+<div class="sub-box flex flex-col justify-between">
+<p id="calcAdvice" class="text-xs text-slate-300 leading-snug">
+С вашими баллами открыты все вузы, включая элитные <b>NJU</b> и <b>SEU</b>.
+</p>
+<a href="#catalog" onclick="applyCalculatorToCatalog()" class="mt-2 w-full py-2 px-3 rounded-xl bg-indigo-600 hover:bg-cyan-500 hover:text-slate-950 text-white font-bold text-xs text-center transition">
+Показать подходящие в каталоге ↓
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="catalog" class="relative z-10 py-8 px-4 sm:px-6">
+<div class="max-w-7xl mx-auto space-y-6">
+<div class="cosmic-glass rounded-3xl p-5 sm:p-6 border border-indigo-500/30 space-y-4">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+<div>
+<span class="text-xs uppercase tracking-widest text-cyan-400 font-bold">Полная база · 13 университетов</span>
+<h2 class="text-xl sm:text-2xl font-bold text-white font-display">Каталог университетов, специальностей и профессий</h2>
+</div>
+<div class="relative w-full lg:w-96">
+<i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-slate-400 text-sm"></i>
+<input id="searchInput" oninput="renderUniversityCatalog()" type="text" placeholder="Поиск: автомеханик, международный бизнес, аудит, ИИ..." class="w-full pl-10 pr-9 py-2.5 rounded-xl bg-slate-950/90 border border-indigo-500/40 text-xs sm:text-sm text-white focus:outline-none focus:border-cyan-400">
+<button onclick="clearSearch()" id="clearSearchBtn" class="hidden absolute right-3 top-2.5 text-slate-400 hover:text-white">
+<i class="fa-solid fa-circle-xmark"></i>
+</button>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 pt-2 border-t border-indigo-500/20" id="categoryFilterBar">
+<button onclick="setFilterCategory('all')" data-cat="all" class="cat-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-indigo-600 text-white shadow-md transition">
+Все вузы (13)
+</button>
+<button onclick="setFilterCategory('business')" data-cat="business" class="cat-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-900/90 text-slate-300 border border-indigo-500/30 hover:border-cyan-400 transition">
+<i class="fa-solid fa-briefcase text-cyan-400 mr-1"></i> Международный бизнес и ВЭД
+</button>
+<button onclick="setFilterCategory('finance')" data-cat="finance" class="cat-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-900/90 text-slate-300 border border-indigo-500/30 hover:border-cyan-400 transition">
+<i class="fa-solid fa-coins text-amber-400 mr-1"></i> Финансы, Банки и Аудит (NUFE / NAU / NUIST)
+</button>
+<button onclick="setFilterCategory('auto')" data-cat="auto" class="cat-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-900/90 text-slate-300 border border-indigo-500/30 hover:border-cyan-400 transition">
+<i class="fa-solid fa-car-side text-emerald-400 mr-1"></i> Автомеханика, Автопром и Аэрокосмос
+</button>
+<button onclick="setFilterCategory('it')" data-cat="it" class="cat-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-900/90 text-slate-300 border border-indigo-500/30 hover:border-cyan-400 transition">
+<i class="fa-solid fa-microchip text-indigo-400 mr-1"></i> ИТ, ИИ и Телеком 5G/6G
+</button>
+<button onclick="setFilterCategory('med')" data-cat="med" class="cat-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-900/90 text-slate-300 border border-indigo-500/30 hover:border-cyan-400 transition">
+<i class="fa-solid fa-staff-snake text-rose-400 mr-1"></i> Медицина, Фарма и Биотех
+</button>
+<button onclick="setFilterCategory('arch')" data-cat="arch" class="cat-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-900/90 text-slate-300 border border-indigo-500/30 hover:border-cyan-400 transition">
+<i class="fa-solid fa-compass-drafting text-purple-400 mr-1"></i> Архитектура, Энергетика и Дизайн
+</button>
+</div>
+</div>
+<div id="catalogGrid" class="grid grid-cols-1 lg:grid-cols-2 gap-6"></div>
+</div>
+</section>
+<section id="admission-matrix" class="relative z-10 py-8 px-4 sm:px-6">
+<div class="max-w-7xl mx-auto">
+<div class="cosmic-glass rounded-3xl p-5 sm:p-8 border border-indigo-500/30 space-y-5">
+<div>
+<span class="text-xs uppercase tracking-widest text-cyan-400 font-bold">Сравнительная таблица</span>
+<h2 class="text-xl sm:text-2xl font-bold text-white font-display mt-1">Критерии поступления, тесты и сроки подачи документов</h2>
+</div>
+<div class="overflow-x-auto rounded-2xl border border-indigo-500/30">
+<table class="w-full text-left border-collapse text-xs sm:text-sm">
+<thead>
+<tr class="bg-indigo-950/90 text-cyan-300 border-b border-indigo-500/30">
+<th class="p-3.5 font-bold">Группа вузов</th>
+<th class="p-3.5 font-bold">Ключевые направления (English)</th>
+<th class="p-3.5 font-bold">Мин. GPA</th>
+<th class="p-3.5 font-bold">IELTS / TOEFL</th>
+<th class="p-3.5 font-bold">Вступительные испытания</th>
+<th class="p-3.5 font-bold">Дедлайн</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-indigo-500/20 bg-slate-950/80 text-slate-200">
+<tr>
+<td class="p-3.5 font-bold text-white">NJU, SEU</td>
+<td class="p-3.5">ИИ, Архитектура, Автотранспорт, Медицина (MBBS), Мировая экономика, MBA</td>
+<td class="p-3.5">3.0 – 3.2+</td>
+<td class="p-3.5">6.0–6.5 / 85–90</td>
+<td class="p-3.5">CSCA (Математика/Физика) + интервью</td>
+<td class="p-3.5 text-cyan-300 font-medium">Февраль – 15 мая</td>
+</tr>
+<tr>
+<td class="p-3.5 font-bold text-white">NUAA, NJUST</td>
+<td class="p-3.5">Международный бизнес, Автомеханика и электромобили, Авиакосмос, Робототехника</td>
+<td class="p-3.5">3.0+</td>
+<td class="p-3.5">6.0 / 80</td>
+<td class="p-3.5">CSCA (Мат+Физ для инженеров; Мат для Бизнеса)</td>
+<td class="p-3.5 text-cyan-300 font-medium">Февраль – 30 мая</td>
+</tr>
+<tr>
+<td class="p-3.5 font-bold text-white">NUFE, NAU, NUIST</td>
+<td class="p-3.5">Финансы, Банки, Международный аудит, Форензик, ВЭД, Финтех, ИИ и Метеорология</td>
+<td class="p-3.5">2.8 – 3.0+</td>
+<td class="p-3.5">6.0 / 80</td>
+<td class="p-3.5">CSCA Математика + онлайн-собеседование</td>
+<td class="p-3.5 text-cyan-300 font-medium">Март – 15 июня</td>
+</tr>
+<tr>
+<td class="p-3.5 font-bold text-white">CPU, NMU</td>
+<td class="p-3.5">Фармацевтика, Биотех, Фарм-бизнес, Лечебное дело (MBBS), Стоматология</td>
+<td class="p-3.5">3.0 – 3.2+</td>
+<td class="p-3.5">6.0–6.5 / 80+</td>
+<td class="p-3.5">CSCA (Химия + Биология) + видео-интервью</td>
+<td class="p-3.5 text-cyan-300 font-medium">Январь – 20 мая</td>
+</tr>
+<tr>
+<td class="p-3.5 font-bold text-white">NNU, NJAU, HHU, NJUPT, Tech/NJFU</td>
+<td class="p-3.5">Телеком 5G, Пищепром, Агробизнес, ГЭС, Химтех, Педагогика, Психология, Дизайн</td>
+<td class="p-3.5">2.8 – 3.0+</td>
+<td class="p-3.5">6.0 / 80</td>
+<td class="p-3.5">Профильный тест / Портфолио / Собеседование</td>
+<td class="p-3.5 text-cyan-300 font-medium">Март – 15 июня</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="scholarships" class="relative z-10 py-8 px-4 sm:px-6 pb-16">
+<div class="max-w-7xl mx-auto space-y-6">
+<div class="cosmic-glass rounded-3xl p-5 sm:p-8 border border-indigo-500/30">
+<span class="text-xs uppercase tracking-widest text-amber-400 font-bold">Финансирование обучения</span>
+<h2 class="text-xl sm:text-2xl font-bold text-white font-display mt-1 mb-6">Стипендии и гранты для иностранных студентов в Нанкине</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+<div class="sub-box border-amber-500/40 space-y-2">
+<div class="flex items-center justify-between">
+<span class="px-2.5 py-0.5 rounded-md text-xs font-bold bg-amber-500/20 text-amber-300">Полный грант (100%)</span>
+<i class="fa-solid fa-crown text-amber-400"></i>
+</div>
+<h3 class="text-base font-bold text-white">Стипендия Правительства КНР (CSC)</h3>
+<p class="text-xs text-slate-300 leading-relaxed">
+Полное освобождение от платы за обучение, бесплатное проживание в кампусе, медицинская страховка и ежемесячная выплата: <b>2500 ¥</b> (бакалавриат), <b>3000 ¥</b> (магистратура), <b>3500 ¥</b> (докторантура).
+</p>
+</div>
+<div class="sub-box border-cyan-500/40 space-y-2">
+<div class="flex items-center justify-between">
+<span class="px-2.5 py-0.5 rounded-md text-xs font-bold bg-cyan-500/20 text-cyan-300">Провинциальный грант</span>
+<i class="fa-solid fa-gem text-cyan-400"></i>
+</div>
+<h3 class="text-base font-bold text-white">Грант провинции Цзянсу (Jasmine)</h3>
+<p class="text-xs text-slate-300 leading-relaxed">
+Престижная стипендия правительства провинции Цзянсу (Jasmine Scholarship). Покрывает от 50% до 100% стоимости обучения и общежития во всех государственных университетах Нанкина.
+</p>
+</div>
+<div class="sub-box border-indigo-500/40 space-y-2">
+<div class="flex items-center justify-between">
+<span class="px-2.5 py-0.5 rounded-md text-xs font-bold bg-indigo-500/20 text-indigo-300">Муниципальный и вузовский</span>
+<i class="fa-solid fa-building-shield text-indigo-400"></i>
+</div>
+<h3 class="text-base font-bold text-white">Грант мэрии Нанкина и ректорские скидки</h3>
+<p class="text-xs text-slate-300 leading-relaxed">
+Стипендия мэрии Нанкина (<b>10 000 – 20 000 ¥/год</b>) и внутренние гранты университетов (NJU, SEU, NUAA, NUIST, NUFE) для абитуриентов с GPA выше 3.2 и высоким баллом IELTS.
+</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<footer class="relative z-10 border-t border-indigo-500/30 bg-slate-950/90 py-6 px-4 sm:px-6 mt-auto">
+<div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+<div class="flex items-center gap-2">
+<i class="fa-solid fa-shuttle-space text-cyan-400"></i>
+<span class="text-slate-200 font-bold">Nanjing AstroPortal</span>
+<span>· Интерактивный справочник по англоязычным программам Нанкина</span>
+</div>
+<div class="flex gap-4">
+<a href="#hero" class="hover:text-cyan-400 transition">Наверх ↑</a>
+<a href="#catalog" class="hover:text-cyan-400 transition">Каталог</a>
+<a href="#calculator" class="hover:text-cyan-400 transition">Калькулятор</a>
+</div>
+</div>
+</footer>
+<div id="uniDetailModal" class="fixed inset-0 z-50 hidden bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-6">
+<div class="cosmic-glass w-full max-w-5xl rounded-3xl p-5 sm:p-8 border border-cyan-500/40 max-h-[92vh] overflow-y-auto space-y-5">
+<div id="uniDetailContent"></div>
+</div>
+</div>
+<div id="compareModal" class="fixed inset-0 z-50 hidden bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-6">
+<div class="cosmic-glass w-full max-w-6xl rounded-3xl p-5 sm:p-8 border border-cyan-500/40 max-h-[90vh] overflow-y-auto space-y-5">
+<div class="flex items-center justify-between border-b border-indigo-500/30 pb-4">
+<div>
+<span class="text-xs uppercase tracking-widest text-cyan-400 font-bold">Сравнительный анализ</span>
+<h3 class="text-lg sm:text-2xl font-bold text-white font-display">Сравнение выбранных университетов</h3>
+</div>
+<div class="flex items-center gap-2">
+<button onclick="clearCompare()" class="px-3 py-1.5 rounded-xl bg-rose-500/20 text-rose-300 border border-rose-500/40 text-xs font-semibold hover:bg-rose-500/30 transition">
+Очистить список
+</button>
+<button onclick="closeCompareModal()" class="w-9 h-9 rounded-xl bg-slate-900 text-slate-300 hover:text-white flex items-center justify-center">
+<i class="fa-solid fa-xmark"></i>
+</button>
+</div>
+</div>
+<div id="compareContent" class="overflow-x-auto"></div>
+</div>
+</div>
+<script>
+const UNIVERSITIES = [
+{
+id: "nju",
+categories: ["business", "it", "finance", "arch"],
+min_gpa_num: 3.2,
+min_ielts_num: 6.5,
+name_en: "Nanjing University (NJU)",
+name_cn: "南京大学",
+ranking_qs: "#90 (World) · Лига C9",
+main_focus: "комплексный (фундаментальная наука, ИТ и ИИ, экономика и международный бизнес, гуманитарные науки)",
+english_programs: [
+{
+level: "Bachelor",
+field: "Экономика, Бизнес и Гуманитарные науки",
+specialties: [
+"International Economics and Trade (Международная экономика и торговля)",
+"Business Administration (Бизнес-администрирование и менеджмент)",
+"Financial Engineering (Финансовый инжиниринг)",
+"Chinese Studies & Literature (Китайские исследования и культура — на англ.)"
+],
+language: "English"
+},
+{
+level: "Bachelor",
+field: "Информационные технологии и Естественные науки",
+specialties: [
+"Computer Science and Technology (Компьютерные науки и технологии)",
+"Software Engineering (Программная инженерия)",
+"Artificial Intelligence (Искусственный интеллект)",
+"Chemistry & Materials Physics (Химия и физика материалов)",
+"Environmental Science (Науки об окружающей среде)"
+],
+language: "English"
+},
+{
+level: "Master/PhD",
+field: "Магистратура и Докторантура (Все факультеты)",
+specialties: [
+"International Business & MBA (Международный бизнес и MBA)",
+"Quantitative Finance & Economics (Количественные финансы и экономика)",
+"Data Science & Machine Learning (Наука о данных и машинное обучение)",
+"International Relations & Global Governance (Международные отношения и дипломатия)",
+"Architecture & Urban Planning (Архитектура и городское планирование)",
+"Condensed Matter Physics & Nano-Chemistry (Квантовая физика и нанохимия)"
+],
+language: "English"
+}
+],
+sample_tasks: [
+"Обучение и оптимизация больших языковых моделей (LLM) и алгоритмов компьютерного зрения в лаборатории ИИ",
+"Разработка стратегии выхода технологической корпорации на рынки АСЕАН и расчёт инвестиционных рисков M&A",
+"Квантово-механическое моделирование полупроводников нового поколения и синтез наноматериалов",
+"Анализ геополитических и макроэкономических кейсов в Центре китайско-американских исследований Джонса Хопкинса — NJU"
+],
+career_path: {
+entry_roles: [
+"Младший специалист по данным (Junior Data Scientist)",
+"Младший финансовый и инвестиционный аналитик",
+"Ассистент по развитию международного бизнеса",
+"Младший научный сотрудник лаборатории (R&D)"
+],
+mid_roles: [
+"Архитектор систем искусственного интеллекта",
+"Менеджер инвестиционного портфеля",
+"Ведущий разработчик ПО / Руководитель продукта",
+"Старший консультант по международной стратегии"
+],
+senior_roles: [
+"Вице-президент по исследованиям и разработкам (VP of R&D)",
+"Технический директор (CTO)",
+"Управляющий партнёр инвестиционного фонда",
+"Директор по глобальному развитию корпорации"
+]
+},
+related_professions: [
+"Инженер по искусственному интеллекту",
+"Финансовый и инвестиционный аналитик",
+"Менеджер по международной торговле",
+"Архитектор программного обеспечения",
+"Исследователь в области квантовой физики и химии",
+"Эксперт по международным отношениям и дипломатии"
+],
+admission: {
+gpa: "3.2+ из 4.0 (аттестат/диплом со средним баллом от 85%)",
+language_test: "IELTS 6.5 / TOEFL 90 (освобождение при обучении на английском)",
+entrance_exam: "CSCA (профильная математика/физика) + академическое онлайн-собеседование",
+documents: [
+"Загранпаспорт",
+"Аттестат или диплом с нотариальным переводом",
+"Академический транскрипт оценок",
+"Мотивационное письмо (Study Plan 800+ слов)",
+"2 рекомендательных письма",
+"Медсправка Foreigner Physical Examination Form",
+"Справка об отсутствии судимости"
+],
+deadlines: "Стипендия CSC: до конца февраля; Общий приём: март – 10 мая"
+}
+},
+{
+id: "seu",
+categories: ["arch", "auto", "it", "med", "business"],
+min_gpa_num: 3.0,
+min_ielts_num: 6.0,
+name_en: "Southeast University (SEU)",
+name_cn: "东南大学",
+ranking_qs: "#428 (World) · Лига 985",
+main_focus: "инженерный и комплексный (архитектура №1–2 в Китае, строительство, 5G/6G телеком, автотранспорт, медицина, бизнес)",
+english_programs: [
+{
+level: "Bachelor",
+field: "Архитектура, Инженерия и Автотранспорт",
+specialties: [
+"Architecture (Архитектурное проектирование — 5 лет)",
+"Civil Engineering (Гражданское и промышленное строительство)",
+"Vehicle & Transportation Engineering (Автомобилестроение и транспортный инжиниринг)",
+"Computer Science & Artificial Intelligence (Компьютерные науки и ИИ)",
+"Electronic Information Engineering (Электроника и радиотехника)"
+],
+language: "English"
+},
+{
+level: "Bachelor",
+field: "Медицина и Международный бизнес",
+specialties: [
+"MBBS — Clinical Medicine (Лечебное дело и клиническая медицина, 6 лет)",
+"International Economics and Trade (Международная экономика и торговля)",
+"Business Administration (Управление бизнесом и логистикой)"
+],
+language: "English"
+},
+{
+level: "Master/PhD",
+field: "Магистратура и Докторантура (Все факультеты)",
+specialties: [
+"Urban Planning & Landscape Architecture (Градостроительство и ландшафтная архитектура)",
+"Information & Communication Engineering (Системы связи 5G/6G)",
+"Intelligent Transportation & Autonomous Vehicles (Умный транспорт и беспилотные авто)",
+"Biomedical Engineering (Биомедицинская инженерия и медтехника)",
+"International Trade & Industrial Economics (Международная торговля и промышленная экономика)",
+"Power Engineering & Renewable Energy (Энергетика и возобновляемые источники)"
+],
+language: "English"
+}
+],
+sample_tasks: [
+"BIM-проектирование сейсмостойких небоскрёбов, вантовых мостов и концепций «умного города»",
+"Разработка алгоритмов движения беспилотных автомобилей и интеллектуальных транспортных развязок мегаполиса",
+"Тестирование антенных решёток и протоколов передачи данных сверхвысокой частоты в государственной лаборатории 6G",
+"Клиническая практика в госпитале Zhongda (для медиков) и расчёт международной цепочки поставок (для экономистов)"
+],
+career_path: {
+entry_roles: [
+"Младший архитектор / BIM-проектировщик",
+"Инженер-испытатель автомобильных систем",
+"Инженер телекоммуникационных сетей",
+"Врач-интерн / Младший бизнес-аналитик"
+],
+mid_roles: [
+"Ведущий архитектор проекта (Lead Architect)",
+"Главный конструктор беспилотного транспорта",
+"Руководитель строительного проекта",
+"Лечащий врач-специалист / Менеджер по ВЭД"
+],
+senior_roles: [
+"Главный архитектор бюро / Партнёр",
+"Главный инженер проекта (ГИП / Chief Engineer)",
+"Директор по развитию инфраструктурных и 6G сетей",
+"Заведующий отделением клиники"
+]
+},
+related_professions: [
+"Архитектор-градостроитель",
+"Инженер-строитель мостов и высотных зданий",
+"Инженер-конструктор автомобилей и умного транспорта",
+"Разработчик систем связи 5G/6G",
+"Врач общей практики и хирург",
+"Специалист по международной торговле и логистике"
+],
+admission: {
+gpa: "3.0+ из 4.0 (высокие оценки по математике и физике для инженеров; химии и биологии для MBBS)",
+language_test: "IELTS 6.0–6.5 / TOEFL 80–90",
+entrance_exam: "CSCA (математика + физика/химия) + онлайн-интервью (для архитектуры — портфолио чертежей)",
+documents: [
+"Паспорт",
+"Аттестат/диплом с приложением",
+"Портфолио работ (для дизайнеров и архитекторов)",
+"2 рекомендации",
+"Мотивационное письмо",
+"Медсправка и справка о несудимости"
+],
+deadlines: "Февраль – 15 мая (стипендии до апреля)"
+}
+},
+{
+id: "nuaa",
+categories: ["auto", "business", "it"],
+min_gpa_num: 3.0,
+min_ielts_num: 6.0,
+name_en: "Nanjing University of Aeronautics and Astronautics (NUAA)",
+name_cn: "南京航空航天大学",
+ranking_qs: "#761–770 (World) · Проект 211 / Double First-Class",
+main_focus: "инженерный и бизнес-технологический (авиация, космонавтика, автомобилестроение и автомеханика, международный бизнес, ИИ)",
+english_programs: [
+{
+level: "Bachelor",
+field: "Международный бизнес, Экономика и Логистика",
+specialties: [
+"International Business (Международный бизнес и глобальный менеджмент)",
+"International Economics and Trade (Международная экономика и торговля)",
+"Air Transportation & Aviation Management (Управление авиаперевозками и логистикой)"
+],
+language: "English"
+},
+{
+level: "Bachelor",
+field: "Автомеханика, Машиностроение и Аэрокосмос",
+specialties: [
+"Vehicle Engineering / Automotive Mechanics (Автомобилестроение, автомеханика и электромобили)",
+"Aeronautical & Aerospace Engineering (Авиастроение и аэрокосмическая инженерия)",
+"Mechanical Engineering & Automation (Машиностроение, мехатроника и автоматизация)",
+"Electrical & Electronic Engineering (Электротехника и бортовая электроника)",
+"Artificial Intelligence & Computer Science (Искусственный интеллект и компьютерные науки)"
+],
+language: "English"
+},
+{
+level: "Master/PhD",
+field: "Магистратура и Докторантура (Инженерия и Бизнес)",
+specialties: [
+"Automotive & Mechanical Engineering (Проектирование автомобилей и мехатронных приводов)",
+"Unmanned Aerial Vehicles — UAV (Проектирование беспилотников и роевого интеллекта)",
+"International Business & Industrial Engineering (Международный бизнес и производственный менеджмент)",
+"Control Science & Avionics (Системы автоматического управления и авионика)",
+"Power Engineering & Jet Propulsion (Двигателестроение и энергетические установки)"
+],
+language: "English"
+}
+],
+sample_tasks: [
+"Автомеханика и автопром: стендовые испытания гибридных двигателей, расчёт подвески, трансмиссии и силовых батарей электромобиля (EV)",
+"Международный бизнес: составление внешнеторговых контрактов, финансовый аудит цепочек поставок и вывод высокотехнологичной продукции на зарубежные рынки",
+"Аэрокосмос: продувка профиля крыла и кузова автомобиля в аэродинамической трубе, программирование автопилота БПЛА",
+"Робототехника: сборка промышленных манипуляторов и ЧПУ-комплексов для автомобильных и авиационных заводов"
+],
+career_path: {
+entry_roles: [
+"Инженер-автомеханик / Конструктор узлов автомобиля (CAD/CAE)",
+"Менеджер по международному бизнесу и внешнеэкономической деятельности (ВЭД)",
+"Инженер-проектировщик беспилотных летательных аппаратов (БПЛА)",
+"Программист встроенных систем и микроконтроллеров"
+],
+mid_roles: [
+"Ведущий инженер-испытатель автоконцерна (EV / Гибриды)",
+"Руководитель отдела международного экспорта и глобальных закупок",
+"Системный архитектор авиационных и робототехнических комплексов",
+"Начальник производственного цеха / Главный механик"
+],
+senior_roles: [
+"Главный конструктор автомобильного или авиационного завода",
+"Коммерческий директор (CCO) / Директор по международному развитию",
+"Технический директор (CTO) машиностроительного холдинга",
+"Руководитель центра НИОКР (R&D Director)"
+]
+},
+related_professions: [
+"Инженер-автомеханик и конструктор автомобилей",
+"Менеджер по международному бизнесу и ВЭД",
+"Авиационный и космический инженер",
+"Специалист по проектированию дронов и БПЛА",
+"Инженер по промышленной робототехнике и мехатронике",
+"Логист международной и авиационной отрасли"
+],
+admission: {
+gpa: "3.0+ из 4.0 (от 75–80% в аттестате; для бизнеса важна математика, для инженерии — математика и физика)",
+language_test: "IELTS 6.0 / TOEFL 80 / Duolingo 105+",
+entrance_exam: "CSCA или внутренний онлайн-экзамен NUAA (математика + физика для технарей; математика + собеседование для Международного бизнеса)",
+documents: [
+"Загранпаспорт",
+"Аттестат/диплом с оценками",
+"Мотивационное письмо",
+"2 рекомендации (для магистратуры)",
+"Медицинская форма",
+"Справка о несудимости"
+],
+deadlines: "Стипендии: январь – 15 апреля; Контракт: до 30 мая"
+}
+},
+{
+id: "njust",
+categories: ["auto", "it", "business", "med"],
+min_gpa_num: 3.0,
+min_ielts_num: 6.0,
+name_en: "Nanjing University of Science and Technology (NJUST)",
+name_cn: "南京理工大学",
+ranking_qs: "#565 (World) · Проект 211 / Double First-Class",
+main_focus: "инженерный и экономико-управленческий (автомобилестроение, робототехника, оптика и фотоника, химтех, IT, международная торговля и право)",
+english_programs: [
+{
+level: "Bachelor",
+field: "Машиностроение, Автопром, IT и Химия",
+specialties: [
+"Mechanical & Vehicle Engineering (Машиностроение, автомобильная техника и мехатроника)",
+"Software Engineering & Computer Science (Программная инженерия и компьютерные науки)",
+"Electronic Information & Optical Engineering (Электроника и оптико-электронные приборы)",
+"Pharmaceutical & Chemical Engineering (Фармацевтическая и химическая инженерия)",
+"Materials Science and Engineering (Материаловедение и композиты)"
+],
+language: "English"
+},
+{
+level: "Bachelor",
+field: "Бизнес, Экономика и Интеллектуальная собственность",
+specialties: [
+"International Economics and Trade (Международная экономика и торговля)",
+"Business Administration & Accounting (Бизнес-администрирование и бухгалтерский учёт)",
+"Industrial Engineering & Management (Индустриальный менеджмент)"
+],
+language: "English"
+},
+{
+level: "Master/PhD",
+field: "Магистратура и Докторантура (Все факультеты)",
+specialties: [
+"Automotive Engineering & Autonomous Driving (Автомобилестроение и беспилотные шасси)",
+"Optical Engineering & Laser Technology (Лазерные и лидарные технологии)",
+"Control Science & Robotics (Робототехника и системы управления)",
+"International Trade, Finance & IP Law (Международная торговля, финансы и патентное право)",
+"Chemical Engineering & Energetic Materials (Химическая технология и энергоёмкие материалы)"
+],
+language: "English"
+}
+],
+sample_tasks: [
+"Проектирование лазерных лидаров (LiDAR) и систем технического зрения для беспилотных автомобилей",
+"Разработка и тестирование независимой подвески, тормозных систем и электропривода колёсных платформ",
+"Финансово-экономическое обоснование промышленного стартапа и защита международных технологических патентов",
+"Синтез сверхпрочных полимерных композитов и новых катализаторов в химическом реакторе"
+],
+career_path: {
+entry_roles: [
+"Инженер-механик автомобильных и роботизированных платформ",
+"Разработчик оптических и лазерных сенсоров",
+"Программист C++/Python для встраиваемых систем",
+"Экономист-аналитик внешнеторгового отдела"
+],
+mid_roles: [
+"Ведущий инженер по системам автопилота и мехатроники",
+"Руководитель конструкторской группы (R&D Team Lead)",
+"Главный технолог химического или приборостроительного производства",
+"Менеджер по международным проектам и патентованию"
+],
+senior_roles: [
+"Главный инженер машиностроительного предприятия",
+"Директор департамента робототехники и приборостроения",
+"Технический директор (CTO)",
+"Генеральный директор производственной компании"
+]
+},
+related_professions: [
+"Инженер-робототехник и мехатроник",
+"Конструктор автомобилей и спецтехники",
+"Инженер-оптик и разработчик лазерных систем",
+"Инженер-химик-технолог",
+"Разработчик программного обеспечения",
+"Менеджер по международной торговле и технологическому бизнесу"
+],
+admission: {
+gpa: "3.0+ из 4.0",
+language_test: "IELTS 6.0 / TOEFL 80",
+entrance_exam: "CSCA (математика + физика/химия) + профильное собеседование",
+documents: [
+"Паспорт",
+"Аттестат/диплом с выпиской оценок",
+"Мотивационное письмо",
+"2 рекомендации",
+"Медсправка",
+"Справка о несудимости"
+],
+deadlines: "Февраль – 30 мая"
+}
+},
+{
+id: "nuist",
+categories: ["finance", "business", "it"],
+min_gpa_num: 2.8,
+min_ielts_num: 6.0,
+name_en: "Nanjing University of Information Science & Technology (NUIST)",
+name_cn: "南京信息工程大学",
+ranking_qs: "Топ-1 в мире по Метеорологии (ARWU) · Double First-Class",
+main_focus: "комплексный научно-технологический и финансово-экономический (метеорология, ИИ и IT, финансовый инжиниринг и бизнес совместно с Reading University UK, экология)",
+english_programs: [
+{
+level: "Bachelor",
+field: "Финансы, Экономика и Международный бизнес (включая британский кампус Reading Academy)",
+specialties: [
+"International Economics and Trade (Международная экономика и торговля)",
+"Financial Engineering & FinTech (Финансовый инжиниринг и климатические финансы)",
+"Business Administration & Accounting (Бизнес-администрирование и финансовый учёт)",
+"International Trade & Quantitative Economics (Количественная экономика — двойной диплом с Univ of Reading, UK)"
+],
+language: "English"
+},
+{
+level: "Bachelor",
+field: "ИТ, Инженерия, Метеорология и Науки о Земле",
+specialties: [
+"Artificial Intelligence (Искусственный интеллект)",
+"Computer Science and Technology (Компьютерные науки и разработка ПО)",
+"Electronic Information Engineering (Электронная инженерия и телеметрии)",
+"Atmospheric Science & Meteorology (Атмосферные науки и метеорология — №1 в мире)",
+"Environmental Science & Marine Technology (Экология и океанография)"
+],
+language: "English"
+},
+{
+level: "Master/PhD",
+field: "Магистратура и Докторантура",
+specialties: [
+"Management Science, Finance & ESG-Economics (Финансовый менеджмент, зелёные финансы и ESG-аналитика)",
+"Meteorology, Climate Modeling & Space Weather (Климатическое моделирование и космическая погода)",
+"Data Science, Big Data & Cybersecurity (Большие данные и кибербезопасность)",
+"Remote Sensing & Satellite Navigation (Спутниковое зондирование Земли и ГИС)"
+],
+language: "English"
+}
+],
+sample_tasks: [
+"Финансы и бизнес: расчёт стоимости углеродных квот (Carbon Trading), оценка климатических и финансовых деривативов для банков и агрохолдингов",
+"ИТ и ИИ: обучение нейросетей на суперкомпьютере для прогнозирования тайфунов, наводнений и динамики биржевых рынков",
+"Спутниковые технологии: расшифровка радиолокационных снимков со спутников серии Fengyun и калибровка метеорадаров",
+"Международная торговля: оптимизация морских логистических маршрутов с учётом погодных и валютных рисков"
+],
+career_path: {
+entry_roles: [
+"Финансовый аналитик / Специалист по ESG и зелёным финансам",
+"Младший разработчик ИИ и аналитик больших данных (Big Data)",
+"Инженер-метеоролог / Специалист по спутниковому мониторингу",
+"Специалист по международной торговле и страхованию рисков"
+],
+mid_roles: [
+"Риск-менеджер инвестиционного банка или страховой корпорации",
+"Ведущий дата-сайентист (Senior Data Scientist)",
+"Руководитель службы авиационной или морской метеорологии",
+"Директор по устойчивому развитию (ESG-менеджер)"
+],
+senior_roles: [
+"Директор департамента управления финансовыми и климатическими рисками",
+"Главный научный консультант международных организаций (ВМО ООН)",
+"Технический директор (CTO) аналитической платформы",
+"Вице-президент по устойчивому развитию и корпоративным финансам"
+]
+},
+related_professions: [
+"Финансовый инженер и ESG-аналитик",
+"Менеджер по международной торговле и экономике",
+"Разработчик систем искусственного интеллекта и Big Data",
+"Климатолог и авиационный метеоролог",
+"Специалист по космическому мониторингу и ГИС-системам",
+"Аналитик страховых и биржевых рисков"
+],
+admission: {
+gpa: "2.8+ из 4.0 (от 75% в аттестате)",
+language_test: "IELTS 6.0 / TOEFL 80 (для программ двойного диплома с Британией IELTS 6.0–6.5)",
+entrance_exam: "CSCA (математика) + онлайн-собеседование",
+documents: [
+"Загранпаспорт",
+"Аттестат или диплом",
+"Транскрипт оценок",
+"Мотивационное письмо",
+"Медсправка и справка о несудимости"
+],
+deadlines: "Март – 15 июня"
+}
+},
+{
+id: "nufe",
+categories: ["finance", "business"],
+min_gpa_num: 2.8,
+min_ielts_num: 6.0,
+name_en: "Nanjing University of Finance and Economics (NUFE)",
+name_cn: "南京财经大学",
+ranking_qs: "Топ-10 финансовых вузов Восточного Китая",
+main_focus: "экономический и финансовый (банковское дело, инвестиции, бухгалтерский учёт, аудит, международная торговля, электронная коммерция, экономическое право)",
+english_programs: [
+{
+level: "Bachelor",
+field: "Финансы, Банковское дело и Бухгалтерский учёт",
+specialties: [
+"Finance & Banking (Финансы, кредит и банковское дело)",
+"Accounting & ACCA Track (Бухгалтерский учёт и международная финансовая отчётность)",
+"Financial Engineering & FinTech (Финансовый инжиниринг и финтех)",
+"Economic Statistics & Actuarial Science (Экономическая статистика и актуарные расчёты)"
+],
+language: "English"
+},
+{
+level: "Bachelor",
+field: "Международный бизнес, Маркетинг и Электронная коммерция",
+specialties: [
+"International Economics and Trade (Международная экономика и торговля)",
+"Business Administration (Бизнес-администрирование — включая двойной диплом с Massey University, Новая Зеландия)",
+"E-Commerce & Digital Marketing (Электронная коммерция и цифровой маркетинг)",
+"Logistics & Supply Chain Management (Управление логистикой и глобальными цепями поставок)"
+],
+language: "English"
+},
+{
+level: "Master/PhD",
+field: "Магистратура и Докторантура (Финансы и Экономика)",
+specialties: [
+"Quantitative Finance & Investment Management (Инвестиционный менеджмент и фондовые рынки)",
+"International Business & Cross-Border Trade (Международный бизнес и трансграничная торговля)",
+"Applied Economics & Industrial Organization (Прикладная макро- и микроэкономика)",
+"Accounting, Auditing & Corporate Governance (Корпоративный аудит и налоговое консультирование)",
+"Food Economics & Commodity Markets (Экономика продовольственных и сырьевых бирж)"
+],
+language: "English"
+}
+],
+sample_tasks: [
+"Фундаментальная и техническая оценка акций, облигаций и деривативов на Шанхайской и Гонконгской фондовых биржах",
+"Составление и аудит консолидированной финансовой отчётности транснациональной корпорации по стандартам IFRS (МСФО)",
+"Построение сквозной финансовой модели трансграничного маркетплейса (Alibaba, Amazon) и оптимизация таможенных пошлин",
+"Эконометрическое моделирование инфляции, валютных курсов юаня и товарных фьючерсов в пакетах R, Python и Stata"
+],
+career_path: {
+entry_roles: [
+"Младший финансовый аналитик / Аудитор (Big 4)",
+"Специалист по международным расчётам и валютному контролю",
+"Аналитик по электронной коммерции и закупкам",
+"Кредитный и инвестиционный инспектор банка"
+],
+mid_roles: [
+"Инвестиционный менеджер / Управляющий активами (Portfolio Manager)",
+"Старший финансовый аудитор / Налоговый консультант",
+"Руководитель департамента внешнеэкономической деятельности (ВЭД)",
+"Финансовый контролёр (Financial Controller)"
+],
+senior_roles: [
+"Финансовый директор корпорации (CFO)",
+"Партнёр аудиторской или консалтинговой компании",
+"Директор инвестиционного департамента банка",
+"Вице-президент по международной коммерции"
+]
+},
+related_professions: [
+"Финансовый директор (CFO) и финансовый менеджер",
+"Инвестиционный банкир и портфельный управляющий",
+"Международный аудитор и специалист по МСФО (ACCA/CFA)",
+"Экономист по международной торговле и таможне",
+"Руководитель проектов в сфере E-Commerce и FinTech",
+"Биржевой аналитик и риск-менеджер"
+],
+admission: {
+gpa: "2.8+ из 4.0 (хорошие оценки по школьной математике)",
+language_test: "IELTS 6.0 / TOEFL 80 / внутренний языковой тест вуза",
+entrance_exam: "CSCA (математика) + онлайн-собеседование",
+documents: [
+"Паспорт",
+"Аттестат или диплом с оценками",
+"Мотивационное письмо",
+"2 рекомендации",
+"Медицинская форма",
+"Справка о несудимости"
+],
+deadlines: "Март – 30 мая"
+}
+},
+{
+id: "nau",
+categories: ["finance", "business", "it"],
+min_gpa_num: 2.8,
+min_ielts_num: 6.0,
+name_en: "Nanjing Audit University (NAU)",
+name_cn: "南京审计大学",
+ranking_qs: "Единственный профильный вуз Государственного аудита Китая (партнёр UN Audit)",
+main_focus: "экономический и финансово-правовой (государственный и корпоративный аудит, IT-аудит, финансы, международный бизнес, экономическая безопасность)",
+english_programs: [
+{
+level: "Bachelor",
+field: "Аудит, Бухучёт, Финансы и Бизнес",
+specialties: [
+"Auditing — ACCA / IAEP Track (Международный аудит и финансовый контроль)",
+"Accounting & Corporate Finance (Бухгалтерский учёт и корпоративные финансы)",
+"Finance & Risk Management (Финансы и банковский риск-менеджмент)",
+"International Economics and Trade (Международная экономика и торговля)",
+"Information Systems & IT-Auditing (Информационные системы и аудит кибербезопасности)"
+],
+language: "English"
+},
+{
+level: "Master",
+field: "Магистратура (Международный и государственный аудит)",
+specialties: [
+"Master of Auditing — International Government Audit (Международный государственный и финансовый аудит — под эгидой Национального офиса аудита КНР)",
+"Applied Economics & Financial Forensics (Прикладная экономика и финансовые расследования / Форензик)",
+"Big Data Auditing & FinTech Regulation (Аудит больших данных и регулирование финтеха)"
+],
+language: "English"
+}
+],
+sample_tasks: [
+"Проведение комплексного форензик-расследования (выявление финансового мошенничества и вывода активов в отчётности компании)",
+"IT-аудит банковских транзакций, блокчейн-контрактов и ERP-систем SAP/Oracle на уязвимости",
+"Оценка эффективности целевого использования средств в международных инфраструктурных проектах ООН и Всемирного банка",
+"Стресс-тестирование кредитного портфеля коммерческого банка по стандартам Basel III"
+],
+career_path: {
+entry_roles: [
+"Внутренний и внешний финансовый аудитор",
+"Специалист по комплаенсу и финансовому мониторингу (AML)",
+"Младший специалист по IT-аудиту и рискам",
+"Финансовый экономист"
+],
+mid_roles: [
+"Старший менеджер по аудиту и форензику",
+"Руководитель службы внутреннего контроля и комплаенса банка",
+"Ведущий специалист по оценке инвестиционных проектов",
+"Советник государственного контрольно-счётного ведомства"
+],
+senior_roles: [
+"Главный аудитор холдинга (Chief Audit Executive — CAE)",
+"Директор по управлению рисками и комплаенсу (CRO / CCO)",
+"Финансовый директор (CFO)",
+"Партнёр международной аудиторской практики"
+]
+},
+related_professions: [
+"Международный финансовый аудитор (CIA / ACCA)",
+"Специалист по финансовым расследованиям (Форензик)",
+"Аудитор информационных систем и финтеха (CISA)",
+"Риск-менеджер и комплаенс-офицер банка",
+"Финансовый контролёр и казначей",
+"Эксперт счётной палаты и международных финансовых институтов"
+],
+admission: {
+gpa: "2.8–3.0+ из 4.0",
+language_test: "IELTS 6.0 / TOEFL 80",
+entrance_exam: "Тест по математике + онлайн-интервью",
+documents: [
+"Паспорт",
+"Аттестат/диплом и транскрипт",
+"Мотивационное письмо",
+"2 рекомендации",
+"Медсправка и справка о несудимости"
+],
+deadlines: "Март – конец мая"
+}
+},
+{
+id: "cpu",
+categories: ["med", "business"],
+min_gpa_num: 3.0,
+min_ielts_num: 6.0,
+name_en: "China Pharmaceutical University (CPU)",
+name_cn: "中国药科大学",
+ranking_qs: "Топ-1 фармацевтический вуз Китая · Проект 211 / Double First-Class",
+main_focus: "медицинский, биотехнологический и фарм-менеджмент (разработка лекарств, клиническая фармация, биоинженерия, международный фармацевтический бизнес)",
+english_programs: [
+{
+level: "Bachelor",
+field: "Фармацевтика, Биотех и Фармацевтический бизнес",
+specialties: [
+"Pharmacy (Фармация и разработка лекарственных форм)",
+"Clinical Pharmacy (Клиническая фармакология и терапия)",
+"Pharmaceutical Engineering (Фармацевтическая инженерия и химсинтез)",
+"Biotechnology & Biopharmaceutics (Биотехнологии и биофармацевтика)",
+"International Pharmaceutical Business & Management (Международный фармацевтический бизнес и маркетинг)"
+],
+language: "English"
+},
+{
+level: "Master/PhD",
+field: "Магистратура и Докторантура",
+specialties: [
+"Medicinal Chemistry & Computer-Aided Drug Design (Медицинская химия и компьютерный дизайн молекул)",
+"Pharmacology & Toxicology (Фармакология и токсикология)",
+"Pharmaceutical Analysis & Quality Control (Фармацевтический анализ и контроль качества GMP)",
+"Social and Administrative Pharmacy (Экономика здравоохранения и регистрация препаратов Regulatory Affairs)"
+],
+language: "English"
+}
+],
+sample_tasks: [
+"Компьютерный молекулярный докинг (поиск молекулы-кандидата против онкологических мишеней) и её органический синтез",
+"Контроль чистоты субстанции методом высокоэффективной жидкостной хроматографии (ВЭЖХ) и масс-спектрометрии",
+"Разработка досье для международной регистрации нового препарата (FDA / EMA / NMPA) и расчёт фармакоэкономики",
+"Анализ лекарственных взаимодействий и подбор таргетной терапии в университетском госпитале"
+],
+career_path: {
+entry_roles: [
+"Химик-аналитик / Технолог фармацевтической лаборатории",
+"Клинический фармаколог / Монитор клинических исследований (CRA)",
+"Специалист по регистрации лекарственных средств (Regulatory Affairs)",
+"Менеджер по развитию фармацевтического бизнеса"
+],
+mid_roles: [
+"Ведущий разработчик лекарственных препаратов (Senior R&D Scientist)",
+"Руководитель отдела контроля и обеспечения качества (QA/QC Manager)",
+"Руководитель клинических испытаний (Clinical Trial Manager)",
+"Директор по выводу препаратов на международный рынок (Market Access)"
+],
+senior_roles: [
+"Директор по научным исследованиям фармкомпании (CSO)",
+"Директор фармацевтического завода",
+"Медицинский директор (Medical Director)",
+"Вице-президент биотехнологической корпорации"
+]
+},
+related_professions: [
+"Разработчик инновационных лекарств (R&D Chemist)",
+"Биотехнолог и генный инженер",
+"Клинический фармаколог",
+"Специалист по клиническим исследованиям (CRA)",
+"Эксперт по контролю качества лекарств (QA/GMP)",
+"Менеджер международного фармацевтического бизнеса"
+],
+admission: {
+gpa: "3.0+ из 4.0 (профильные химия и биология)",
+language_test: "IELTS 6.0 / TOEFL 80",
+entrance_exam: "CSCA (химия + биология/математика) + онлайн-интервью",
+documents: [
+"Паспорт",
+"Аттестат/диплом с оценками",
+"Мотивационное письмо",
+"2 рекомендации",
+"Медсправка и справка о несудимости"
+],
+deadlines: "Февраль – 20 мая"
+}
+},
+{
+id: "nmu",
+categories: ["med"],
+min_gpa_num: 3.2,
+min_ielts_num: 6.0,
+name_en: "Nanjing Medical University (NMU)",
+name_cn: "南京医科大学",
+ranking_qs: "Топ-5 медицинских вузов Китая · Double First-Class",
+main_focus: "медицинский (лечебное дело MBBS, стоматология, хирургия, педиатрия, общественное здравоохранение, медицинская информатика)",
+english_programs: [
+{
+level: "Bachelor",
+field: "Клиническая медицина, Стоматология и Реабилитация",
+specialties: [
+"MBBS — Clinical Medicine (Лечебное дело / Врач общей практики — 6 лет, аккредитовано ВОЗ)",
+"Bachelor of Dental Surgery — BDS (Стоматология и челюстно-лицевая хирургия)",
+"Nursing & Rehabilitation Therapy (Сестринское дело и физическая реабилитация)",
+"Medical Imaging & Radiology (Медицинская визуализация, КТ и МРТ-диагностика)"
+],
+language: "English"
+},
+{
+level: "Master/PhD",
+field: "Магистратура и Ординатура",
+specialties: [
+"Surgery, Internal Medicine & Pediatrics (Хирургия, терапия, кардиология, педиатрия)",
+"Master of Public Health — MPH (Общественное здравоохранение, эпидемиология и управление клиниками)",
+"Oncology, Neurology & Medical Genetics (Онкология, неврология и медицинская генетика)",
+"Stomatology & Prosthodontics (Ортопедическая и хирургическая стоматология)"
+],
+language: "English"
+}
+],
+sample_tasks: [
+"Отработка лапароскопических и микрохирургических операций на роботах-симуляторах и в анатомическом театре",
+"Годовая клиническая ротация в Первом госпитале провинции Цзянсу (более 4500 коек): приём пациентов, расшифровка МРТ и ЭКГ",
+"Проектирование цифровых коронок и имплантатов с помощью 3D-сканирования в стоматологической клинике",
+"Эпидемиологический анализ вспышек инфекций и управление бюджетом медицинского центра (для программы MPH)"
+],
+career_path: {
+entry_roles: [
+"Врач-интерн / Врач-ординатор (Resident Doctor)",
+"Врач-стоматолог общей практики",
+"Врач-рентгенолог / Специалист УЗИ и МРТ",
+"Специалист по общественному здравоохранению и эпидемиологии"
+],
+mid_roles: [
+"Лечащий профильный врач (кардиолог, хирург, педиатр, невролог)",
+"Хирург-имплантолог / Стоматолог-ортопед",
+"Заведующий клиническим или диагностическим отделением",
+"Руководитель медицинских программ ВОЗ"
+],
+senior_roles: [
+"Главный врач больницы / Медицинского центра (Chief Medical Officer)",
+"Ведущий хирург / Профессор клинической медицины",
+"Владелец сети стоматологических или многопрофильных клиник",
+"Директор департамента здравоохранения"
+]
+},
+related_professions: [
+"Врач-терапевт и врач общей практики",
+"Хирург, кардиолог, онколог, педиатр",
+"Врач-стоматолог и ортодонт",
+"Врач лучевой диагностики (МРТ / КТ)",
+"Эпидемиолог и управленец в сфере здравоохранения",
+"Медицинский генетик-исследователь"
+],
+admission: {
+gpa: "3.2+ из 4.0 (строгий отбор по биологии, химии и физике/математике)",
+language_test: "IELTS 6.0–6.5 / TOEFL 80+",
+entrance_exam: "CSCA (биология + химия) + обязательное видео-интервью с приёмной комиссией",
+documents: [
+"Загранпаспорт",
+"Аттестат/диплом с отличными оценками по естественным наукам",
+"Мотивационное письмо",
+"2 рекомендации",
+"Медсправка и справка о несудимости"
+],
+deadlines: "Январь – 30 апреля"
+}
+},
+{
+id: "nnu",
+categories: ["business", "arch"],
+min_gpa_num: 2.8,
+min_ielts_num: 6.0,
+name_en: "Nanjing Normal University (NNU)",
+name_cn: "南京师范大学",
+ranking_qs: "Топ-5 педагогических и гуманитарных вузов Китая · Проект 211 / Double First-Class",
+main_focus: "педагогический, гуманитарный и бизнес-управленческий (образование, психология, иностранные языки, медиа и дизайн, международный бизнес, геоинформатика)",
+english_programs: [
+{
+level: "Bachelor",
+field: "Бизнес, Языки, Медиа и Искусство",
+specialties: [
+"International Business & Trade (Международный бизнес и экономика)",
+"Translation, Interpreting & Applied Linguistics (Перевод, лингвистика и межкультурная коммуникация)",
+"Teaching Chinese / English to Speakers of Other Languages — TESOL (Преподавание языков)",
+"Visual Communication Design & Fine Arts (Графический дизайн, медиаискусство и анимация)",
+"Journalism & New Media Communication (Журналистика, PR и цифровые медиа)"
+],
+language: "English"
+},
+{
+level: "Master/PhD",
+field: "Магистратура и Докторантура (Педагогика, Психология, ГИС и Бизнес)",
+specialties: [
+"Educational Leadership & EdTech Management (Управление образованием и образовательными технологиями)",
+"Applied & Cognitive Psychology (Прикладная психология, когнитивистика и HR-консалтинг)",
+"TESOL & Foreign Linguistics (Методика преподавания английского языка)",
+"Geographic Information Systems — GIS & Cartography (Геоинформационные системы — один из лидеров Китая)",
+"Business Administration & Tourism Management (Бизнес-администрирование и международный туризм)"
+],
+language: "English"
+}
+],
+sample_tasks: [
+"Проектирование интерактивных онлайн-курсов (EdTech), геймификации обучения и образовательных платформ",
+"Проведение нейропсихологических экспериментов с айтрекингом (Eye-Tracking) и ЭЭГ для изучения внимания и памяти",
+"Создание айдентики бренда, UX/UI-дизайна приложений и 3D-анимации на факультете искусств",
+"Разработка 3D-карт мегаполисов и пространственной аналитики в лаборатории геоинформационных систем (ГИС)"
+],
+career_path: {
+entry_roles: [
+"Преподаватель международной школы / Специалист TESOL",
+"Методист онлайн-образования (Instructional Designer / EdTech)",
+"Корпоративный психолог / HR-специалист по оценке талантов",
+"Графический и UX/UI-дизайнер / PR-менеджер"
+],
+mid_roles: [
+"Руководитель образовательных программ (Curriculum Director)",
+"Ведущий продуктовый дизайнер / Арт-директор",
+"Руководитель департамента обучения и развития персонала (L&D Head)",
+"Ведущий ГИС-аналитик картографического сервиса"
+],
+senior_roles: [
+"Директор международной школы или образовательного холдинга",
+"Директор по персоналу и организационному развитию (CHRO)",
+"Креативный директор медиа-агентства",
+"Основатель EdTech-стартапа"
+]
+},
+related_professions: [
+"Директор и методист образовательных программ (EdTech)",
+"Преподаватель международных программ (IB / TESOL)",
+"Практический и корпоративный психолог",
+"Переводчик-синхронист и специалист по межкультурным переговорам",
+"Графический дизайнер и арт-директор",
+"Специалист по геоинформационным систем (ГИС)"
+],
+admission: {
+gpa: "2.8+ из 4.0",
+language_test: "IELTS 6.0–6.5 / TOEFL 80+",
+entrance_exam: "Онлайн-собеседование (для дизайнеров — портфолио творческих работ)",
+documents: [
+"Паспорт",
+"Аттестат или диплом",
+"Мотивационное письмо",
+"2 рекомендации",
+"Творческое портфолио (для дизайна)",
+"Медсправка и справка о несудимости"
+],
+deadlines: "Март – 10 июня"
+}
+},
+{
+id: "njau",
+categories: ["med", "business", "auto"],
+min_gpa_num: 2.8,
+min_ielts_num: 6.0,
+name_en: "Nanjing Agricultural University (NJAU)",
+name_cn: "南京农业大学",
+ranking_qs: "Топ-10 мира по Агронаукам · Проект 211 / Double First-Class",
+main_focus: "комплексный биотехнологический и агроэкономический (пищевые технологии, генная инженерия, ветеринария, агробизнес и международная торговля, агророботы)",
+english_programs: [
+{
+level: "Bachelor",
+field: "Пищевая индустрия, Биотехнологии и Агробизнес",
+specialties: [
+"Food Science and Engineering (Пищевая биотехнология, инженерия и контроль качества продуктов)",
+"Agricultural & Food Economics and Trade (Экономика пищевой индустрии, агробизнес и международная торговля)",
+"Agronomy & Plant Biotechnology (Агрономия и биотехнология растений)",
+"Animal Science & Veterinary Medicine (Ветеринарная медицина и зоотехния)",
+"Agricultural Mechanization & Smart Machinery (Сельскохозяйственное машиностроение и агророботы)"
+],
+language: "English"
+},
+{
+level: "Master/PhD",
+field: "Магистратура и Докторантура",
+specialties: [
+"Genetics, Genomics & CRISPR Breeding (Генетика, геномика и молекулярная селекция)",
+"Food Safety, Nutrition & Microbiology (Пищевая безопасность, нутрициология и микробиология)",
+"Veterinary Medicine & Zoonotic Diseases (Ветеринария и вирусология)",
+"Agribusiness Management & Rural Finance (Управление агрохолдингами и сырьевыми рынками)",
+"Land Resource Management & Ecology (Управление земельными ресурсами и экология)"
+],
+language: "English"
+}
+],
+sample_tasks: [
+"Редактирование генома растений методом CRISPR/Cas9 для устойчивости к засухе и вредителям",
+"Разработка рецептур функционального питания, растительного мяса и биоразлагаемой пищевой упаковки",
+"Настройка беспилотных тракторов, агродронов-опрыскивателей и автоматизированных вертикальных ферм",
+"Экспортно-импортный анализ мирового рынка зерна, чая и продуктов питания, сертификация по стандартам ISO/HACCP"
+],
+career_path: {
+entry_roles: [
+"Инженер-технолог пищевого производства / Специалист по качеству (HACCP)",
+"Биотехнолог-генетик в селекционном центре",
+"Ветеринарный врач / Эксперт санитарного контроля",
+"Менеджер по закупкам и экспорту сельхозпродукции"
+],
+mid_roles: [
+"Главный технолог пищевого комбината (Nestlé, Danone, Unilever)",
+"Руководитель лаборатории молекулярной генетики",
+"Коммерческий менеджер международного агротрейдера",
+"Главный инженер парка роботизированной агротехники"
+],
+senior_roles: [
+"Директор по качеству и R&D пищевой корпорации",
+"Генеральный директор агропромышленного холдинга",
+"Директор биотехнологического института",
+"Эксперт Продовольственной и сельскохозяйственной организации ООН (FAO)"
+]
+},
+related_professions: [
+"Технолог пищевой промышленности и нутрициолог",
+"Генетик-селекционер и биоинженер",
+"Ветеринарный врач и микробиолог",
+"Менеджер по международному агробизнесу и фуд-трейдингу",
+"Инженер автоматизированных комплексов и агродронов",
+"Аудитор пищевой безопасности (ISO / HACCP)"
+],
+admission: {
+gpa: "2.8+ из 4.0",
+language_test: "IELTS 6.0 / TOEFL 80",
+entrance_exam: "CSCA (биология/химия или математика для экономики) + собеседование",
+documents: [
+"Паспорт",
+"Аттестат/диплом с оценками",
+"Мотивационное письмо",
+"2 рекомендации",
+"Медсправка и справка о несудимости"
+],
+deadlines: "Март – 31 мая"
+}
+},
+{
+id: "hhu",
+categories: ["arch", "business", "it"],
+min_gpa_num: 3.0,
+min_ielts_num: 6.0,
+name_en: "Hohai University (HHU)",
+name_cn: "河海大学",
+ranking_qs: "#1001 · Топ-1 в мире по Гидроинженерии · Проект 211 / Double First-Class",
+main_focus: "инженерный и инфраструктурно-экономический (гидроэнергетика, строительство плотин и портов, альтернативная энергетика, экология, управление международными проектами)",
+english_programs: [
+{
+level: "Bachelor",
+field: "Строительство, Энергетика, IT и Бизнес",
+specialties: [
+"Civil Engineering (Гражданское, гидротехническое и инфраструктурное строительство)",
+"Water Conservancy & Hydropower Engineering (Гидроэнергетика и водные ресурсы)",
+"Electrical & Renewable Energy Engineering (Электроэнергетика, ветро- и солнечная энергия)",
+"Computer Science and Technology (Компьютерные науки)",
+"International Economics, Trade & Project Management (Международная экономика и управление мегапроектами)"
+],
+language: "English"
+},
+{
+level: "Master/PhD",
+field: "Магистратура и Докторантура",
+specialties: [
+"Hydraulic Engineering & Dam Safety (Проектирование плотин ГЭС и гидроузлов)",
+"Harbor, Coastal and Offshore Engineering (Строительство морских портов, терминалов и офшорных ветропарков)",
+"Environmental Engineering & Water Treatment (Инженерная экология и очистка воды)",
+"Business Administration & Infrastructure Finance (Финансирование и менеджмент инфраструктурных проектов)"
+],
+language: "English"
+}
+],
+sample_tasks: [
+"Гидродинамическое 3D-моделирование плотин гидроэлектростанций (по аналогии с ГЭС «Три ущелья») и расчёт сейсмоустойчивости",
+"Проектирование глубоководных морских контейнерных портов, искусственных островов и офшорных ветрогенераторов",
+"Финансово-технический расчёт окупаемости трансграничных энергетических и транспортных коридоров (EPC-контракты)",
+"Разработка мембранных станций опреснения и очистки промышленных сточных вод"
+],
+career_path: {
+entry_roles: [
+"Инженер-гидротехник / Инженер-строитель ПГС",
+"Инженер-проектировщик морских портов и берегозащиты",
+"Инженер возобновляемой энергетики (ВЭС / ГЭС / СЭС)",
+"Специалист по тендерам и управлению строительными контрактами (FIDIC)"
+],
+mid_roles: [
+"Ведущий инженер-расчётчик инфраструктурных сооружений",
+"Руководитель строительства энергетического объекта (Project Manager)",
+"Главный эколог-гидролог промышленного проекта",
+"Директор по закупкам и международным EPC-контрактам"
+],
+senior_roles: [
+"Главный инженер проекта (ГИП) гидроэлектростанции или морского порта",
+"Технический директор энергетической или строительной корпорации",
+"Директор международного департамента инфраструктурного холдинга",
+"Советник министерства энергетики и водных ресурсов"
+]
+},
+related_professions: [
+"Инженер-строитель ГЭС, мостов и тоннелей",
+"Проектировщик морских портов и офшорных платформ",
+"Инженер-энергетик (гидро-, ветро- и солнечная генерация)",
+"Руководитель международных строительных проектов (EPC Manager)",
+"Инженер-эколог систем водоснабжения",
+"Экономист энергетической и строительной отрасли"
+],
+admission: {
+gpa: "3.0+ из 4.0",
+language_test: "IELTS 6.0 / TOEFL 80",
+entrance_exam: "CSCA (математика + физика) + онлайн-интервью",
+documents: [
+"Паспорт",
+"Аттестат/диплом с оценками",
+"Мотивационное письмо",
+"2 рекомендации",
+"Медсправка и справка о несудимости"
+],
+deadlines: "Февраль – 15 мая"
+}
+},
+{
+id: "njupt",
+categories: ["it", "business"],
+min_gpa_num: 2.8,
+min_ielts_num: 6.0,
+name_en: "Nanjing University of Posts and Telecommunications (NJUPT)",
+name_cn: "南京邮电大学",
+ranking_qs: "Double First-Class · Ведущий ИТ и Телеком-вуз Восточного Китая",
+main_focus: "инженерный и цифровой бизнес (телекоммуникации 5G/6G, кибербезопасность, интернет вещей IoT, разработка ПО, микроэлектроника, цифровой менеджмент)",
+english_programs: [
+{
+level: "Bachelor",
+field: "ИТ, Телекоммуникации, Микроэлектроника и Бизнес",
+specialties: [
+"Communication Engineering (Телекоммуникационная инженерия и сети 5G/6G)",
+"Computer Science and Technology (Компьютерные науки и облачные вычисления)",
+"Software Engineering & Information Security (Программная инженерия и кибербезопасность)",
+"Internet of Things — IoT Engineering (Инженерия Интернета вещей и умных устройств)",
+"Electronic Science & Microelectronics (Микроэлектроника и дизайн микросхем IC Design)",
+"Business Administration & E-Commerce (Управление цифровым бизнесом и электронная коммерция)"
+],
+language: "English"
+},
+{
+level: "Master/PhD",
+field: "Магистратура и Докторантура",
+specialties: [
+"Information and Communication Engineering (Оптические и мобильные системы связи)",
+"Cyberspace Security & Cryptography (Кибербезопасность, блокчейн и криптография)",
+"Signal and Information Processing & AI (Обработка сигналов и искусственный интеллект)",
+"Management Science & Digital Economy (Цифровая экономика и управление телеком-проектами)"
+],
+language: "English"
+}
+],
+sample_tasks: [
+"Развёртывание и оптимизация базовых станций 5G, настройка программно-определяемых сетей (SDN) и облачных кластеров",
+"Пентестинг (этичный взлом), поиск уязвистей и криптографическая защита банковских и корпоративных серверов",
+"Проектирование архитектуры интегральных микросхем (ASIC/FPGA) и датчиков «умного дома» / «умного производства»",
+"Управление разработкой мобильных супер-приложений и цифровых маркетплейсов по методологии Agile/Scrum"
+],
+career_path: {
+entry_roles: [
+"Сетевой и телеком-инженер (NOC / 5G Engineer)",
+"Full-Stack / Backend разработчик ПО",
+"Специалист по информационной безопасности (Pentester / SOC Analyst)",
+"Разработчик IoT-устройств и микросхем / ИТ-менеджер продукта"
+],
+mid_roles: [
+"Архитектор облачных и телекоммуникационных решений (Cloud / Solutions Architect)",
+"Ведущий инженер кибербезопасности (Security Lead)",
+"Старший инженер-разработчик чипов (Senior IC Designer)",
+"Руководитель ИТ-продукта (Product Owner)"
+],
+senior_roles: [
+"Директор по информационным технологиям (CIO / CTO)",
+"Директор по информационной безопасности (CISO)",
+"Главный архитектор телеком-оператора или ИТ-гиганта (Huawei, ZTE, Tencent)",
+"Вице-президент по цифровым продуктам"
+]
+},
+related_professions: [
+"Инженер мобильной и спутниковой связи 5G/6G",
+"Специалист по кибербезопасности и криптографии",
+"Разработчик программного обеспечения и облачных систем",
+"Архитектор систем Интернета вещей (IoT)",
+"Инженер-проектировщик микросхем и полупроводников",
+"Продакт-менеджер в сфере ИТ и E-Commerce"
+],
+admission: {
+gpa: "2.8+ из 4.0",
+language_test: "IELTS 6.0 / TOEFL 80",
+entrance_exam: "CSCA (математика) + онлайн-интервью",
+documents: [
+"Паспорт",
+"Аттестат/диплом и выписка оценок",
+"Мотивационное письмо",
+"2 рекомендации",
+"Медсправка и справка о несудимости"
+],
+deadlines: "Март – 15 июня"
+}
+},
+{
+id: "njtech_njfu",
+categories: ["arch", "auto", "business"],
+min_gpa_num: 2.8,
+min_ielts_num: 6.0,
+name_en: "Nanjing Tech University & Nanjing Forestry University (Nanjing Tech & NJFU)",
+name_cn: "南京工业大学 & 南京林业大学",
+ranking_qs: "Топ-100 Азии по Химтеху и Эко-дизайну · Double First-Class (NJFU)",
+main_focus: "инженерный и дизайнерско-экологический (химическая инженерия, водородная энергетика, биоматериалы, промышленный и ландшафтный дизайн, мебельная индустрия, международная торговля)",
+english_programs: [
+{
+level: "Bachelor",
+field: "Nanjing Tech: Химический инжиниринг, Материалы, Механика и Бизнес",
+specialties: [
+"Chemical Engineering and Technology (Химическая технология, нефтехимия и полимеры)",
+"Materials Science & New Energy (Новые материалы, водородная энергетика и аккумуляторы)",
+"Mechanical Engineering & Process Equipment (Машиностроение и промышленное оборудование)",
+"Architecture & Civil Engineering (Архитектура и промышленное строительство)",
+"International Economics and Trade (Международная экономика и торговля)"
+],
+language: "English"
+},
+{
+level: "Bachelor/Master",
+field: "Nanjing Forestry (NJFU): Дизайн, Ландшафтная архитектура, Экология и Автоматизация",
+specialties: [
+"Landscape Architecture & Urban Design (Ландшафтная архитектура и парковый дизайн)",
+"Industrial & Furniture Design (Промышленный дизайн, дизайн интерьеров и умной мебели)",
+"Wood Science & Green Biomaterials (Биокомпозиты и экологичные материалы)",
+"Forestry, Ecology & Carbon Management (Лесоводство, экология и углеродный менеджмент)",
+"Mechanical & Automotive Logistics Engineering (Транспортно-логистические машины и автоматизация)"
+],
+language: "English"
+}
+],
+sample_tasks: [
+"Проектирование мембранных биореакторов, водородных топливных элементов и линий производства новых полимеров",
+"3D-визуализация городских эко-парков, набережных и общественных пространств (Landscape Architecture)",
+"Конструирование эргономичной мебели, предметов интерьера и экологичной упаковки для глобальных брендов (IKEA и др.)",
+"Оценка углеродного баланса территорий с помощью лазерного сканирования и дронов"
+],
+career_path: {
+entry_roles: [
+"Инженер-химик-технолог / Специалист по водородной энергетике",
+"Ландшафтный архитектор / Дизайнер интерьеров и промышленных изделий",
+"Инженер по композитным и полимерным материалам",
+"Эколог-аудитор / Специалист по международным закупкам сырья"
+],
+mid_roles: [
+"Начальник технологической установки / Главный технолог завода",
+"Ведущий ландшафтный архитектор / Руководитель дизайн-студии",
+"Менеджер по экологической сертификации и ESG-трансформации",
+"Руководитель отдела разработки новых материалов (R&D)"
+],
+senior_roles: [
+"Директор нефтехимического или материаловедческого завода",
+"Главный архитектор градостроительных и парковых проектов",
+"Арт-директор мебельного и интерьерного холдинга",
+"Вице-президент по устойчивому развитию и зелёным технологиям"
+]
+},
+related_professions: [
+"Инженер-химик и технолог нефтегазохимии",
+"Специалист по водородной энергетике и батареям",
+"Ландшафтный архитектор и урбанист",
+"Промышленный дизайнер и проектировщик интерьеров",
+"Инженер по новым биоматериалам и полимерам",
+"Эксперт по экологическому мониторингу и ESG"
+],
+admission: {
+gpa: "2.8+ из 4.0",
+language_test: "IELTS 6.0 / TOEFL 80",
+entrance_exam: "CSCA (математика + химия/физика) или портфолио для дизайнеров + собеседование",
+documents: [
+"Паспорт",
+"Аттестат/диплом с оценками",
+"Мотивационное письмо",
+"2 рекомендации",
+"Портфолио (для дизайна и архитектуры)",
+"Медсправка и справка о несудимости"
+],
+deadlines: "Март – 15 июня"
+}
+}
+];
+let activeCategory = 'all';
+let compareList = [];
+let cardTabsState = {};
+function initSite() {
+UNIVERSITIES.forEach(u => { cardTabsState[u.id] = 'programs'; });
+renderUniversityCatalog();
+updateCalculator();
+}
+function toggleMobileMenu() {
+const nav = document.getElementById('mobileNav');
+const icon = document.getElementById('mobileMenuIcon');
+nav.classList.toggle('hidden');
+icon.className = nav.classList.contains('hidden') ? 'fa-solid fa-bars' : 'fa-solid fa-xmark';
+}
+function setFilterCategory(cat) {
+activeCategory = cat;
+document.querySelectorAll('.cat-btn').forEach(btn => {
+if (btn.dataset.cat === cat) {
+btn.className = "cat-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-indigo-600 text-white shadow-md transition";
+} else {
+btn.className = "cat-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-900/90 text-slate-300 border border-indigo-500/30 hover:border-cyan-400 transition";
+}
+});
+renderUniversityCatalog();
+}
+function clearSearch() {
+document.getElementById('searchInput').value = '';
+renderUniversityCatalog();
+}
+function switchCardTab(uniId, tabName) {
+cardTabsState[uniId] = tabName;
+renderUniversityCatalog();
+}
+function renderUniversityCatalog() {
+const query = (document.getElementById('searchInput').value || '').toLowerCase().trim();
+const clearBtn = document.getElementById('clearSearchBtn');
+clearBtn.classList.toggle('hidden', !query);
+const grid = document.getElementById('catalogGrid');
+const filtered = UNIVERSITIES.filter(u => {
+const matchesCat = activeCategory === 'all' || u.categories.includes(activeCategory);
+if (!matchesCat) return false;
+if (!query) return true;
+const searchableText = [
+u.name_en, u.name_cn, u.main_focus,
+...u.related_professions,
+...u.sample_tasks,
+...u.english_programs.flatMap(p => [p.field, ...p.specialties]),
+...u.career_path.entry_roles,
+...u.career_path.mid_roles,
+...u.career_path.senior_roles
+].join(' ').toLowerCase();
+return searchableText.includes(query);
+});
+if (filtered.length === 0) {
+grid.innerHTML = ⁠<div class="col-span-full cosmic-glass rounded-3xl p-10 text-center space-y-3"> <i class="fa-solid fa-satellite text-4xl text-cyan-400"></i> <h3 class="text-lg font-bold text-white font-display">Ничего не найдено по вашему запросу</h3> <p class="text-xs sm:text-sm text-slate-300">Попробуйте сбросить фильтр или ввести другой запрос: <b>международный бизнес, автомеханик, финансы, аудит, медицина, ИИ</b>.</p> <button onclick="clearSearch(); setFilterCategory('all');" class="px-4 py-2 rounded-xl bg-indigo-600 text-white text-xs font-bold">Сбросить все фильтры</button> </div>⁠;
+return;
+}
+grid.innerHTML = filtered.map((u) => {
+const activeTab = cardTabsState[u.id] || 'programs';
+const isCompared = compareList.includes(u.id);
+let tabBodyHtml = '';
+if (activeTab === 'programs') {
+tabBodyHtml = ⁠<div class="space-y-2.5"> ${u.english_programs.map(p =>⁠
+<div class="sub-box">
+<div class="flex items-center justify-between gap-2 mb-1.5">
+<span class="px-2 py-0.5 rounded text-[11px] font-bold bg-indigo-500/25 text-cyan-300 border border-cyan-500/30">￼
+￼{p.field}</span>
+</div>
+<ul class="space-y-1 text-xs text-slate-200 list-disc pl-4">
+￼
+￼
+￼
+`).join('')}
+￼
+￼
+} else if (activeTab === 'career') {
+￼
+￼
+￼
+￼
+￼
+${u.related_professions.map(pr => `<span class="px-2.5 py-1 rounded-lg text-[11px] bg-cyan-500/15 border border-cyan-400/30 text-cyan-200">{pr}</span>⁠).join('')} </div> </div> <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs"> <div class="sub-box border-slate-700"> <span class="text-[11px] font-bold text-cyan-400 block mb-1">1. Старт (Entry):</span> <ul class="list-disc pl-3.5 space-y-1 text-slate-300"> ${u.career_path.entry_roles.map(r => ⁠<li>{r}</li>`).join('')}
+￼
+￼
+￼
+￼
+￼
+${u.career_path.mid_roles.map(r => `<li>{r}</li>⁠).join('')} </ul> </div> <div class="sub-box border-emerald-500/40"> <span class="text-[11px] font-bold text-emerald-300 block mb-1">3. Топ (Senior):</span> <ul class="list-disc pl-3.5 space-y-1 text-white font-medium"> ${u.career_path.senior_roles.map(r => ⁠<li>{r}</li>`).join('')}
+￼
+￼
+￼
+￼
+￼
+} else if (activeTab === 'tasks') {
+￼
+￼
+￼
+￼
+${u.sample_tasks.map(t => `
+￼
+￼
+<span>{t}</span>
+</li>
+⁠).join('')} </ul> </div> ⁠;
+} else if (activeTab === 'admission') {
+tabBodyHtml = ⁠<div class="sub-box space-y-2.5 text-xs"> <div class="grid grid-cols-1 sm:grid-cols-2 gap-2"> <div><span class="text-slate-400 block">GPA / Оценки:</span><b class="text-white">${u.admission.gpa}</b></div> <div><span class="text-slate-400 block">Языковой тест:</span><b class="text-cyan-300">${u.admission.language_test}</b></div> <div><span class="text-slate-400 block">Вступительный экзамен:</span><b class="text-indigo-200">${u.admission.entrance_exam}</b></div> <div><span class="text-slate-400 block">Дедлайны подачи:</span><b class="text-emerald-300">${u.admission.deadlines}</b></div> </div> <div class="pt-2 border-t border-indigo-500/20 text-slate-300"> <b class="text-white">Документы:</b> ${u.admission.documents.join(' · ')} </div> </div>⁠;
+}
+return `
+<article class="cosmic-card p-5 sm:p-6 flex flex-col justify-between gap-4">
+<div class="space-y-3">
+<div class="flex flex-wrap items-center justify-between gap-2">
+<span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">￼
+￼{u.name_cn}</span>
+</div>
+<div>
+<h3 class="text-lg sm:text-xl font-bold text-white font-display leading-snug">${u.name_en}</h3>
+<p class="text-xs text-indigo-200 mt-1"><b class="text-cyan-400">Профиль:</b> ${u.main_focus}</p>
+</div>
+<div class="grid grid-cols-4 gap-1 p-1 rounded-xl bg-slate-950/90 border border-indigo-500/25 text-[11px] sm:text-xs font-semibold">
+<button onclick="switchCardTab('${u.id}', 'programs')" class="py-1.5 rounded-lg transition ${activeTab === 'programs' ? 'bg-indigo-600 text-white' : 'text-slate-400 hover:text-white'}">Факультеты</button>
+<button onclick="switchCardTab('${u.id}', 'career')" class="py-1.5 rounded-lg transition ${activeTab === 'career' ? 'bg-indigo-600 text-white' : 'text-slate-400 hover:text-white'}">Карьера</button>
+<button onclick="switchCardTab('${u.id}', 'tasks')" class="py-1.5 rounded-lg transition ${activeTab === 'tasks' ? 'bg-indigo-600 text-white' : 'text-slate-400 hover:text-white'}">Задачи</button>
+<button onclick="switchCardTab('${u.id}', 'admission')" class="py-1.5 rounded-lg transition ${activeTab === 'admission' ? 'bg-indigo-600 text-white' : 'text-slate-400 hover:text-white'}">Приём</button>
+</div>
+<div>${tabBodyHtml}</div>
+</div>
+<div class="flex items-center justify-between gap-2 pt-3 border-t border-indigo-500/25">
+<button onclick="toggleCompare('${u.id}')" class="px-3 py-2 rounded-xl text-xs font-semibold border transition flex items-center gap-1.5 ${isCompared ? 'bg-emerald-500/20 border-emerald-400 text-emerald-300' : 'bg-slate-900 border-indigo-500/30 text-slate-300 hover:border-cyan-400'}">
+<i class="fa-solid ${isCompared ? 'fa-check' : 'fa-plus'}"></i>
+<span>${isCompared ? 'В сравнении' : 'Сравнить'}</span>
+</button>
+<button onclick="openUniModal('${u.id}')" class="px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-500 hover:opacity-95 text-white text-xs font-bold shadow-md transition flex items-center gap-1.5">
+<span>Полное досье вуза</span>
+<i class="fa-solid fa-expand"></i>
+</button>
+</div>
+</article>
+`;
+}).join('');
+}
+function updateCalculator() {
+const gpa = parseFloat(document.getElementById('calcGpa').value);
+const ielts = parseFloat(document.getElementById('calcIelts').value);
+const interest = document.getElementById('calcInterest').value;
+document.getElementById('gpaVal').textContent = gpa.toFixed(1);
+document.getElementById('ieltsVal').textContent = ielts.toFixed(1);
+const matched = UNIVERSITIES.filter(u => {
+const gpaOk = gpa >= u.min_gpa_num;
+const ieltsOk = ielts >= u.min_ielts_num;
+if (!gpaOk || !ieltsOk) return false;
+if (interest === 'all') return true;
+return JSON.stringify(u).toLowerCase().includes(interest);
+});
+const badge = document.getElementById('calcResultCount');
+badge.textContent = ⁠Подходит: ${matched.length} из ${UNIVERSITIES.length} вузов⁠;
+const advice = document.getElementById('calcAdvice');
+if (matched.length >= 11) {
+advice.innerHTML = ⁠Отличные показатели! Вам доступны почти все вузы Нанкина, включая флагманы <b>NJU</b>, <b>SEU</b>, <b>NUAA</b> и <b>NUFE</b>.⁠;
+} else if (matched.length >= 5) {
+advice.innerHTML = ⁠Хорошие шансы! Вам подходят профильные университеты (<b>NUIST, NUFE, NAU, NJUPT, NNU, NJAU</b>).⁠;
+} else {
+advice.innerHTML = ⁠Рекомендуем рассмотреть программу языкового года (Foundation) или сдачу внутреннего теста вуза для повышения шансов.⁠;
+}
+}
+function applyCalculatorToCatalog() {
+const interest = document.getElementById('calcInterest').value;
+const searchInput = document.getElementById('searchInput');
+setFilterCategory('all');
+searchInput.value = interest === 'all' ? '' : interest;
+renderUniversityCatalog();
+}
+function openUniModal(uniId) {
+const u = UNIVERSITIES.find(item => item.id === uniId);
+if (!u) return;
+const modal = document.getElementById('uniDetailModal');
+const content = document.getElementById('uniDetailContent');
+content.innerHTML = `
+<div class="flex items-start justify-between gap-4 border-b border-indigo-500/30 pb-4">
+<div>
+<div class="flex flex-wrap items-center gap-2 mb-1">
+<span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-cyan-500/20 text-cyan-300 border border-cyan-500/40">￼
+￼{u.name_cn}</span>
+</div>
+<h2 class="text-xl sm:text-3xl font-extrabold text-white font-display">${u.name_en}</h2>
+<p class="text-xs sm:text-sm text-indigo-200 mt-1"><b class="text-cyan-400">Основная направленность:</b> ${u.main_focus}</p>
+</div>
+<button onclick="closeUniModal()" class="w-9 h-9 shrink-0 rounded-xl bg-slate-900 text-slate-300 hover:text-white flex items-center justify-center">
+<i class="fa-solid fa-xmark"></i>
+</button>
+</div>
+<div class="space-y-4 pt-3">
+<h3 class="text-xs sm:text-sm uppercase tracking-wider text-cyan-400 font-bold"><i class="fa-solid fa-graduation-cap mr-1.5"></i> Все факультеты и специальности (English)</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+{u.english_programs.map(p => `
+￼
+￼
+￼
+￼
+${p.specialties.map(s => `<li>{s}</li>⁠).join('')} </ul> </div> ⁠).join('')}
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+<div class="sub-box space-y-2">
+<h3 class="text-xs uppercase tracking-wider text-indigo-300 font-bold"><i class="fa-solid fa-flask mr-1.5"></i> Примеры реальных задач</h3>
+<ul class="space-y-2 text-xs sm:text-sm text-slate-200">
+${u.sample_tasks.map(t => ⁠<li class="flex items-start gap-2"><i class="fa-solid fa-meteor text-cyan-400 mt-1"></i><span>${t}</span></li>⁠).join('')}
+</ul>
+</div>
+<div class="sub-box space-y-3">
+<h3 class="text-xs uppercase tracking-wider text-emerald-400 font-bold"><i class="fa-solid fa-briefcase mr-1.5"></i> Профессии и карьерная лестница</h3>
+<div class="flex flex-wrap gap-1.5">
+￼
+￼
+￼
+￼
+￼
+￼{u.career_path.entry_roles.map(r => ⁠<li>${r}</li>⁠).join('')}</ul>
+</div>
+<div class="p-2.5 rounded-xl bg-slate-950 border border-indigo-500/30">
+<b class="text-indigo-300 block mb-1">2. Средний:</b>
+<ul class="list-disc pl-3.5 space-y-1 text-slate-200">￼
+￼
+￼
+￼
+￼{u.career_path.senior_roles.map(r => ⁠<li>${r}</li>⁠).join('')}</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sub-box border-amber-500/40">
+<h3 class="text-xs uppercase tracking-wider text-amber-300 font-bold mb-2"><i class="fa-solid fa-clipboard-check mr-1.5"></i> Требования к поступлению</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs sm:text-sm">
+<div><span class="text-slate-400 block text-xs">GPA:</span><b class="text-white">￼
+￼{u.admission.language_test}</b></div>
+<div><span class="text-slate-400 block text-xs">Экзамен:</span><b class="text-indigo-200">￼
+￼{u.admission.deadlines}</b></div>
+</div>
+<p class="text-xs text-slate-300 mt-2 pt-2 border-t border-indigo-500/20"><b>Документы:</b> ${u.admission.documents.join(' · ')}</p>
+</div>
+</div>
+`;
+modal.classList.remove('hidden');
+}
+function closeUniModal() {
+document.getElementById('uniDetailModal').classList.add('hidden');
+}
+function toggleCompare(uniId) {
+if (compareList.includes(uniId)) {
+compareList = compareList.filter(id => id !== uniId);
+} else {
+if (compareList.length >= 4) {
+compareList.shift();
+}
+compareList.push(uniId);
+}
+document.getElementById('compareCountBadge').textContent = compareList.length;
+renderUniversityCatalog();
+}
+function clearCompare() {
+compareList = [];
+document.getElementById('compareCountBadge').textContent = '0';
+renderCompareModalContent();
+renderUniversityCatalog();
+}
+function openCompareModal() {
+renderCompareModalContent();
+document.getElementById('compareModal').classList.remove('hidden');
+}
+function closeCompareModal() {
+document.getElementById('compareModal').classList.add('hidden');
+}
+function renderCompareModalContent() {
+const container = document.getElementById('compareContent');
+if (compareList.length === 0) {
+container.innerHTML = ⁠<div class="text-center py-10 space-y-3"> <i class="fa-solid fa-scale-balanced text-3xl text-cyan-400"></i> <p class="text-sm text-slate-300">Вы ещё не добавили университеты для сравнения. Нажмите кнопку <b>«+ Сравнить»</b> на любых карточках в каталоге (до 4 вузов одновременно).</p> </div>⁠;
+return;
+}
+const selectedUnis = compareList.map(id => UNIVERSITIES.find(u => u.id === id)).filter(Boolean);
+container.innerHTML = ⁠<table class="w-full text-left border-collapse text-xs sm:text-sm"> <thead> <tr class="border-b border-indigo-500/30 bg-indigo-950/70"> <th class="p-3 text-slate-400 w-36">Параметр</th> ${selectedUnis.map(u =>⁠<th class="p-3 text-white font-bold min-w-[220px]">￼{u.ranking_qs}</span></th>⁠).join('')} </tr> </thead> <tbody class="divide-y divide-indigo-500/20 text-slate-200"> <tr> <td class="p-3 font-semibold text-cyan-300">Профиль</td> ${selectedUnis.map(u => ⁠<td class="p-3">{u.main_focus}</td>`).join('')}
+￼
+￼
+￼
+${selectedUnis.map(u => `<td class="p-3 font-bold">{u.admission.gpa}</td>⁠).join('')} </tr> <tr> <td class="p-3 font-semibold text-cyan-300">Английский язык</td> ${selectedUnis.map(u => ⁠<td class="p-3">{u.admission.language_test}</td>`).join('')}
+￼
+￼
+￼
+${selectedUnis.map(u => `<td class="p-3">{u.admission.entrance_exam}</td>⁠).join('')} </tr> <tr> <td class="p-3 font-semibold text-cyan-300">Ключевые профессии</td> ${selectedUnis.map(u => ⁠<td class="p-3">{u.related_professions.join(', ')}</td>`).join('')}
+￼
+￼
+￼
+${selectedUnis.map(u => `<td class="p-3 text-emerald-300">{u.career_path.senior_roles.join(', ')}</td>⁠).join('')} </tr> </tbody> </table> ⁠;
+}
+window.onload = initSite;
+</script>
+</body>
+</html>
